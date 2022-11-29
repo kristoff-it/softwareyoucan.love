@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    {{ $style := resources.Get "main.css" | toCSS | minify | fingerprint }}
+    <link type="text/css" rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+		{{- partial "head.html" . -}}
+		{{- block "head" . -}} 
+			  <meta name="description" 
+							content="a conference that celebrates the art of creating software for humans">
+			  <meta name="twitter:card" content="summary">
+			  <meta name="twitter:site" content="@croloris">
+			  <meta name="twitter:image" content="">
+			  <meta name="twitter:author" content="@croloris">
+			  <meta name="twitter:description" 
+							content="a conference that celebrates the art of creating software for humans">
+			  <meta name="twitter:title" content="Software You Can Love">
+			  <meta property="og:title" content="Software You Can love">
+			  <meta property="og:type" content="website">
+			  <meta property="og:image" content="">
+		{{ end }}
+		<style>
+			#content, body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#content {
+				width: 96vw;
+				max-width: 700px;
+			}
+			#content h1:nth-of-type(1) {
+				margin-top: 0;
+			}
+		</style>
+	</head>
+    <body>
+			{{- if  (not .Params.noheader) -}}
+				{{- partial "header.html" . -}}
+			{{- end -}}
+			<div id="content">
+			{{- block "main" . }}{{- end }}
+			</div>
+			{{- partial "footer.html" . -}}
+    </body>
+</html>
