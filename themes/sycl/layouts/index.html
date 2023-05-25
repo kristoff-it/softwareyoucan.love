@@ -24,6 +24,61 @@
   table th {
     border-bottom: 1px solid;
   }
+  #buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+    padding-top: 0.4em;
+  }
+  
+  #buttons a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+  @media (prefers-color-scheme:dark) {
+    #buttons a {
+      color: white;
+    }  
+  }
+  #youtube-button, #discord-button {
+    display:block;
+    padding: 0.5em 0.8em;
+    border: 2px solid;
+  }
+  
+  
+  #event-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #event-list p {
+    text-align:center;
+    margin: 0;
+  }
+  
+  #event-list h3 {
+    margin-top:0;
+  }
+  
+  #event-table {
+    display: none;
+  }
+  
+  @media screen and (min-width:800px) {
+    #event-list {
+      display: none;
+    }
+    #event-table {
+      display: table;
+    }
+  }
+  
 </style>
 <div>
   <h1 style="margin-bottom:0;"> Software You Can Love </h1>
@@ -63,9 +118,29 @@ software engineers and users.
 humans, come join us.</strong>
 </p>
 
+
+<div id="buttons">
+  <a id="youtube-button" href="https://youtube.com/c/ZigSHOWTIME" target="_blank">YouTube</a>
+  <a id="discord-button" href="https://discord.gg/B73sGxF" target="_blank">Discord Community</a>
+</div>
+
 <h2>Current and Past Events</h2>
 
-<table style="width:100%">
+<div id="event-list">
+  <div>
+    <h3>Vancouver, Canada</h3>
+    <p><a href="https://softwareyoucanlove.ca" target="_blank">https://softwareyoucanlove.ca</a></p>
+    <p>7-9 June 2023</p>
+  </div>
+  <hr style="width:60%">
+  <div>
+    <h3>Milan, Italy</h3>
+    <p><a href="https://sycl.it" target="_blank">https://sycl.it</a></p>
+    <p>7-10 October 2022</p>
+  </div>
+</div>
+
+<table style="width:100%" id="event-table">
 <thead>
 <tr>
   <th>Location</th>
