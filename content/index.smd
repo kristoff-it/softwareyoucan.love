@@ -1,0 +1,31 @@
+---
+.title = "Homepage",
+.date = @date("1990-01-01T00:00:00"),
+.author = "Sample Author",
+.layout = "index.shtml",
+.draft = false,
+.custom = {
+   "events": [
+      {
+         .location = "Vancouver, Canada",
+         .link = "https://softwareyoucanlove.ca",
+         .dates = "3-6 October 2026",
+      },
+      {
+         .location = "Milan, Italy",
+         .link = "https://sycl.it",
+         .dates = "14-17 May 2024",
+      },
+      {
+         .location = "Vancouver, Canada",
+         .link = "https://softwareyoucanlove.ca",
+         .dates = "7-9 June 2023",
+      },
+      {
+         .location = "Milan, Italy",
+         .link = "https://sycl.it",
+         .dates = "7-10 October 2022",
+      },
+   ],
+},
+---

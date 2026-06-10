@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Software You Can Love</title>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="$site.asset('main.css').link()">
+		<meta name="description" content="celebrate the art of creating software for humans">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@croloris">
+		<meta name="twitter:author" content="@croloris">
+		<meta name="twitter:description" content="celebrate the art of creating software for humans">
+		<meta name="twitter:title" content="Software You Can Love">
+		<meta property="og:title" content="Software You Can love">
+		<meta property="og:type" content="website">
+
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#content {
+				width: 96vw;
+				max-width: 700px;
+			}
+			#content h1:nth-of-type(1) {
+				margin-top: 0;
+			}
+			
+			h1,h2,h3 { text-align: center; }
+			#footnote {
+				margin-top: 70px;
+				font-size: 0.8rem;
+				text-align:center;
+			}
+			table th {
+				border-bottom: 1px solid;
+			}
+			#buttons {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1em;
+				width: 100%;
+				padding-top: 0.4em;
+			}
+			
+			#buttons a {
+				text-decoration: none;
+				color: black;
+				text-align: center;
+			}
+			@media (prefers-color-scheme:dark) {
+				#buttons a {
+					color: white;
+				}
+			}
+			#youtube-button, #discord-button {
+				display:block;
+				padding: 0.5em 0.8em;
+				border: 2px solid;
+			}
+			
+			#event-list {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			
+			#event-list p {
+				text-align:center;
+				margin: 0;
+			}
+			
+			#event-list h3 {
+				margin-top:0;
+			}
+			
+			#event-table {
+				display: none;
+			}
+			
+			@media screen and (min-width:800px) {
+				#event-list {
+					display: none;
+				}
+				#event-table {
+					display: table;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main id="content">
+			<div>
+				<h1 style="margin-bottom:0;">
+					Software You Can Love
+				</h1>
+				<h3 style="margin-top:0;"><i>
+					celebrate the art of creating software for humans
+				</i></h3>
+			</div>
+			<p>
+			</p>
+			<p>
+				For some of us, <strong>creating software is an intimate act</strong>.
+				We <a href="https://kristoff.it/blog/north-star/" target="_blank">care deeply</a>
+				about the experience that results from our work, just
+				like a painter or a musician takes pride in their art.
+			</p>
+			<p>
+				Software You Can Love conferences have a main day where you can
+				expect to see talks about
+				<a href="https://www.youtube.com/watch?v=haEyHWokMuQ" target="_blank">supporting the creation of music</a>,
+				<a href="https://www.youtube.com/watch?v=ZSYNML-Yhxo" target="_blank">generative art</a>,
+				<a href="https://www.youtube.com/watch?v=IcV9TVb-vF4" target="_blank">cross-stitching</a>,
+				and more. Some talks will be about
+				<a href="https://www.youtube.com/watch?v=QTybQ-5MlrE" target="_blank">rethinking basic building blocks</a>
+				of computing, while others will tackle big questions, like
+				<a href="https://www.youtube.com/watch?v=MG8BEYhQ-KE">"Does Technology Destroy Art?"</a>.
+			</p>
+			<p>
+				Unfortunately, <strong>a lot of software out there is not software you
+					can love</strong>. Many of us are forced to write user-hostile software
+				at work and elegant solutions are often discarded in the pursuit
+				of extravagant business models. At Software You Can Love we also
+				want to learn how to protect ourselves from dark patterns, both as
+				software engineers and users.
+			</p>
+			<p>
+				<strong>If you too want to celebrate the art of creating software for
+					humans, come join us.</strong>
+			</p>
+
+			<div id="buttons">
+				<a id="youtube-button" href="https://youtube.com/c/ZigSHOWTIME" target="_blank">YouTube</a>
+				<a id="discord-button" href="https://discord.gg/B73sGxF" target="_blank">Discord Community</a>
+			</div>
+
+			<h2>Current and Past Events</h2>
+
+			<div id="event-list" :loop="$page.custom.get('events')">
+				<ctx :if="$loop.first">
+					<hr style="width:60%">
+				</ctx>
+				<div>
+					<h3 :text="$loop.it.get('location')"></h3>
+					<p>
+						<a href="$loop.it.get('link')"
+						   target="_blank"
+						   :text="$loop.it.get('link')"
+						></a>
+					</p>
+					<p :text="$loop.it.get('dates')"></p>
+				</div>
+			</div>
+
+			<table style="width:100%" id="event-table">
+				<thead>
+					<tr>
+						<th>Location</th>
+						<th>Website</th>
+						<th>Dates</th>
+					</tr>
+				</thead>
+				<tbody :loop="$page.custom.get('events')">
+					<tr>
+						<td :text="$loop.it.get('location')"></td>
+						<td>
+							<a href="$loop.it.get('link')"
+							   target="_blank"
+							   :text="$loop.it.get('link')"
+							></a>
+						</td>
+						<td :text="$loop.it.get('dates')"></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h2>Zig Days</h2>
+			<p>
+				Zig Days are single day, in person events dedicated to collaborative programming
+				and socialization in order to inspire you to make software you can love. You can
+				find the full list here: <a href="https://zig.day">https://zig.day</a>.
+			</p>
+
+			<p id="footnote"><i>
+				Software You Can Love was an expression originally created by Loris
+				Cro in "<a href="https://kristoff.it/blog/the-open-source-game/">Playing the Open Source Game</a>" to describe a missing key quality in mainstream software production.
+			</i></p>
+		</main>
+	</body>
+</html>
